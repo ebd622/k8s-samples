@@ -59,6 +59,14 @@ sudo exportfs -v
 sudo mount -t nfs 192.168.56.2:/srv/nfs/kubedata /mnt
 ```
 
+Here you may have an [issue](https://askubuntu.com/questions/525243/why-do-i-get-wrong-fs-type-bad-option-bad-superblock-error)  with mounting. 
+
+To fix you need to install `nfs-common` on every node (master and workers):
+
+```
+sudo apt install nfs-common
+```
+
 Check the mount:
 ```
 mount | grep kubedata
@@ -69,14 +77,6 @@ Output:
 172.42.42.100:/srv/nfs/kubedata on /mnt type nfs4
  (rw,relatime,vers=4.1,rsize=262144,wsize=262144,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,clientaddr=172.42.42.101,local_lock=none,addr=172.42.42.100)
  ```
- 
- Here you may have an [issue](https://askubuntu.com/questions/525243/why-do-i-get-wrong-fs-type-bad-option-bad-superblock-error)  with mounting. 
-
-To fix you need to install `nfs-common` on every node (master and workers):
-
-```
-sudo apt install nfs-common
-```
  
  8. After verifying that NFS is configured correctly and working we can unmount the filesystem.
 
