@@ -30,8 +30,9 @@ nc -zvw3 192.168.56.2 2049
 5. Edit the exports file to add the file system we created to be exported to remote hosts.
 ```
 sudo vi /etc/exports
-
-### Add the configuration:
+```
+Add the configuration:
+```
 /srv/nfs/kubedata *(rw,sync,no_subtree_check,no_root_squash,no_all_squash,insecure)
 ```
 
@@ -40,7 +41,9 @@ sudo vi /etc/exports
 ```
 sudo exportfs -rav
 
-### This will print:
+```
+Output:
+```
 exporting *:/srv/nfs/kubedata
 ```
 
@@ -49,3 +52,21 @@ If you want to see more details about our export file system, you can run “exp
 ```
 sudo exportfs -v
 ```
+
+7. Test the NFS configurations. Log onto one of the worker nodes and mount the nfs filesystem and verify.
+
+```
+sudo mount -t nfs 192.168.56.2:/srv/nfs/kubedata /mnt
+```
+
+Check the mount:
+```
+mount | grep kubedata
+```
+
+Output:
+```
+172.42.42.100:/srv/nfs/kubedata on /mnt type nfs4
+ (rw,relatime,vers=4.1,rsize=262144,wsize=262144,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,clientaddr=172.42.42.101,local_lock=none,addr=172.42.42.100)
+ ```
+ 
