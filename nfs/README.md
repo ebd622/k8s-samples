@@ -254,5 +254,86 @@ deployment.apps/nfs-client-provisioner   1/1     1            1           42s
 NAME                                                DESIRED   CURRENT   READY   AGE
 replicaset.apps/nfs-client-provisioner-6b5c7f8f75   1         1         1       42s
 ```
+#### Test the client: create PV, PVC and POD
+When client is installed we can perform some testing.
+
+3.3.4 Creating Persistent Volume and Persistent Volume Claims
+
+Check is there is any PV and PVC:
+```
+vagrant@kubemaster:~/samples/k8s-samples/nfs (main)
+$ kubectl get pv,pvc
+No resources found in default namespace.
+```
+Also, we can look in the directory we allocated for Persistent Volumes:
+```
+vagrant@kubemaster:~/samples/k8s-samples/nfs (main)
+$ ls -l /srv/nfs/kubedata/
+total 0
+```
+Create PVC (note, we don't create PV here):
+```
+vagrant@kubemaster:~/samples/k8s-samples/nfs (main)
+$ kubectl create -f 4-pvc-nfs.yaml
+persistentvolumeclaim/pvc1 created
+```
+
+Check is there is any PVC and **PV** have been created:
+```
+$ kubectl get pvc,pv
+NAME                         STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS          AGE
+persistentvolumeclaim/pvc1   Bound    pvc-cb32cece-a85d-4e76-abd4-d14df4f685dd   500Mi      RWX            managed-nfs-storage   65s
+
+NAME                                                        CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM          STORAGECLASS          REASON   AGE
+persistentvolume/pvc-cb32cece-a85d-4e76-abd4-d14df4f685dd   500Mi      RWX            Delete           Bound    default/pvc1   managed-nfs-storage            64s
+```
+As we can see that both PVC and PV have been created. Note, that **PV** has *dynamically* been created!
+
+
+Check the directory that we allocated for Persistent Volumes:
+```
+vagrant@kubemaster:~/samples/k8s-samples/nfs (main)
+$ ls -l /srv/nfs/kubedata/
+total 4
+drwxrwxrwx 2 root root 4096 Mar 14 10:53 default-pvc1-pvc-cb32cece-a85d-4e76-abd4-d14df4f685dd
+```
+We can see that a new folder has been created there.
+
+3.3.4 Create a Pod to use Persistent Volume Claims
+
+```
+vagrant@kubemaster:~/samples/k8s-samples/nfs (main)
+$ kubectl create -f 4-busybox-pv-nfs.yaml 
+pod/busybox created
+```
+Check the created pod:
+```
+vagrant@kubemaster:~/samples/k8s-samples/nfs (main)
+$ k get po
+NAME                                      READY   STATUS    RESTARTS   AGE
+busybox                                   1/1     Running   0          21s
+nfs-client-provisioner-6b5c7f8f75-w4wfk   1/1     Running   0          37m
+```
+Log onto the pod and create a test file `test.txt` in a shared path:
+```
+vagrant@kubemaster:~/samples/k8s-samples/nfs (main)
+$ k exec -it busybox -- /bin/sh
+/ # ls -l /mydata/
+total 0
+/ # touch /mydata/test.txt
+/ # ls -l /mydata/
+total 0
+-rw-r--r--    1 root     root             0 Mar 14 11:22 test.txt
+/ # 
+```
+Log out from the POD and check the directory allocated for Persistent Volumes:
+```
+vagrant@kubemaster:~/samples/k8s-samples/nfs (main)
+$ ls -l /srv/nfs/kubedata/default-pvc1-pvc-cb32cece-a85d-4e76-abd4-d14df4f685dd/
+total 0
+-rw-r--r-- 1 root root 0 Mar 14 11:22 test.txt
+```
+As we can see the file `test.txt` is shared across the master node and the pod.
+
 
 
