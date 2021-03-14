@@ -159,7 +159,11 @@ NAME         PROVISIONER                                       RECLAIMPOLICY   V
 nfs-client   cluster.local/nfs-client-provisioner-1615715679   Delete          Immediate           true                   17m
 ```
 
-3.1.3. Uninstall a client-provisioner
+3.1.3 Create PV, PVC and POD to test the client
+
+To test the deployment just run the steps described in 3.3.4 - 3.3.5. In 3.3.4 you need to use `helm-pvc-nfs.yaml` instead of `4-pvc-nfs.yaml` to create PVC and PV.
+
+3.1.4 Uninstall a client-provisioner
 
 ```
 vagrant@kubemaster:~ 
