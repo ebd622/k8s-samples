@@ -52,9 +52,14 @@ If you want to see more details about our export file system, you can run “exp
 ```
 sudo exportfs -v
 ```
+Output:
+```
+/srv/nfs/kubedata
+		<world>(rw,wdelay,insecure,no_root_squash,no_subtree_check,sec=sys,rw,insecure,no_root_squash,no_all_squash)
+```
 
 ### 2. Test the NFS configuration
-2.1 Test the NFS configurations. Log onto one of the worker nodes and mount the nfs filesystem and verify.
+2.1 Log onto one of the worker nodes, mount the nfs filesystem and verify it:
 
 ```
 sudo mount -t nfs 192.168.56.2:/srv/nfs/kubedata /mnt
