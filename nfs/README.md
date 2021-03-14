@@ -105,3 +105,64 @@ total 0
 ```
 sudo umount /mnt
 ```
+### 3. Install NFS client-provisioner
+
+The next step is to install `NFS client-provisioner`. There are a few options how to do it:
+* Install with a Helm-chart (run just one command)
+* Install manually step-by-step
+
+Let's consider both options
+
+#### 3.1 Install with Helm chart
+
+3.1.1 Run the command to install a client-provisioner:
+```
+helm install --set nfs.server=192.168.56.2 --set nfs.path=/srv/nfs/kubedata/ ckotzbauer/nfs-client-provisioner --generate-name
+```
+
+Here we specify two parameters:
+* `nfs.server=192.168.56.2` - IP address of the NFS server
+* `nfs.path=/srv/nfs/kubedata/` - a path which has been exported via NFS
+
+3.1.2 Check the installation
+
+Check the chart and installed pod:
+
+```
+vagrant@kubemaster:~ 
+$ helm ls
+NAME                             	NAMESPACE	REVISION	UPDATED                                	STATUS  	CHART                       	APP VERSION
+nfs-client-provisioner-1615715679	default  	1       	2021-03-14 09:54:41.495997762 +0000 UTC	deployed	nfs-client-provisioner-1.0.2	3.1.0
+
+vagrant@kubemaster:~ 
+$ kubectl get po
+NAME                                                 READY   STATUS    RESTARTS   AGE
+nfs-client-provisioner-1615715679-5b9fb655db-p5jcb   1/1     Running   0          12m
+```
+
+Check a Service Account and Role Bindings:
+```
+vagrant@kubemaster:~ 
+$ kubectl get clusterrole,clusterrolebinding,role,rolebinding | grep nfs
+clusterrole.rbac.authorization.k8s.io/nfs-client-provisioner-1615715679-runner                               2021-03-14T09:54:41Z
+clusterrolebinding.rbac.authorization.k8s.io/run-nfs-client-provisioner-1615715679                  ClusterRole/nfs-client-provisioner-1615715679-runner                               15m
+role.rbac.authorization.k8s.io/leader-locking-nfs-client-provisioner-1615715679   2021-03-14T09:54:41Z
+rolebinding.rbac.authorization.k8s.io/leader-locking-nfs-client-provisioner-1615715679   Role/leader-locking-nfs-client-provisioner-1615715679   15m
+
+```
+
+Check a storageclass:
+```
+vagrant@kubemaster:~ 
+$ kubectl get storageclass
+NAME         PROVISIONER                                       RECLAIMPOLICY   VOLUMEBINDINGMODE   ALLOWVOLUMEEXPANSION   AGE
+nfs-client   cluster.local/nfs-client-provisioner-1615715679   Delete          Immediate           true                   17m
+```
+
+3.1.3. Uninstall a client-provisioner
+
+```
+vagrant@kubemaster:~ 
+$ helm uninstall nfs-client-provisioner-1615715679
+release "nfs-client-provisioner-1615715679" uninstalled
+```
