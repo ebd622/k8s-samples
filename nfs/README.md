@@ -166,3 +166,93 @@ vagrant@kubemaster:~
 $ helm uninstall nfs-client-provisioner-1615715679
 release "nfs-client-provisioner-1615715679" uninstalled
 ```
+
+#### 3.2 Manual step-by-step installation
+
+You can check out detail instructions in [How‌ to‌ Setup‌ Dynamic‌ NFS‌ Provisioning‌ Server‌ For‌ Kubernetes](https://redblink.com/setup-nfs-server-provisioner-kubernetes/). (Look into the section "Dynamic NFS Provisioning in Kubernetes").
+
+Here is a short summary
+
+3.2.1 Deploying Service Account and Role Bindings
+
+```
+vagrant@kubemaster:~/samples/k8s-samples/nfs (main)
+$ kubectl create -f rbac.yaml
+serviceaccount/nfs-client-provisioner created
+clusterrole.rbac.authorization.k8s.io/nfs-client-provisioner-runner created
+clusterrolebinding.rbac.authorization.k8s.io/run-nfs-client-provisioner created
+role.rbac.authorization.k8s.io/leader-locking-nfs-client-provisioner created
+rolebinding.rbac.authorization.k8s.io/leader-locking-nfs-client-provisioner created
+```
+Verify that the service account, clusterrole and binding was created:
+```
+vagrant@kubemaster:~/samples/k8s-samples/nfs (main)
+$ kubectl get clusterrole,clusterrolebinding,role,rolebinding | grep nfs
+clusterrole.rbac.authorization.k8s.io/nfs-client-provisioner-runner                                          2021-03-14T10:30:41Z
+clusterrolebinding.rbac.authorization.k8s.io/run-nfs-client-provisioner                             ClusterRole/nfs-client-provisioner-runner                                          59s
+role.rbac.authorization.k8s.io/leader-locking-nfs-client-provisioner   2021-03-14T10:30:41Z
+rolebinding.rbac.authorization.k8s.io/leader-locking-nfs-client-provisioner   Role/leader-locking-nfs-client-provisioner   59s
+```
+
+3.2.2  Deploy Storage Class
+```
+vagrant@kubemaster:~/samples/k8s-samples/nfs (main)
+$ kubectl create -f class.yaml
+storageclass.storage.k8s.io/managed-nfs-storage created
+```
+
+Verify that the storage class was created:
+```
+$ kubectl get storageclass
+NAME                  PROVISIONER       RECLAIMPOLICY   VOLUMEBINDINGMODE   ALLOWVOLUMEEXPANSION   AGE
+managed-nfs-storage   example.com/nfs   Delete          Immediate           false                  51s
+```
+
+3.3.3 Deploying NFS client-provisioner
+Before deploying make sure that correct values for IP_address of the NFS and path are specified in `deployment.yaml`. In our example we use:
+* NFS IP-address: `192.168.56.2`
+* Path: `/srv/nfs/kubedata`
+```
+      containers:
+        - name: nfs-client-provisioner
+          image: quay.io/external_storage/nfs-client-provisioner:latest
+          volumeMounts:
+            - name: nfs-client-root
+              mountPath: /persistentvolumes
+          env:
+            - name: PROVISIONER_NAME
+              value: example.com/nfs
+            - name: NFS_SERVER
+              value: 192.168.56.2
+            - name: NFS_PATH
+              value: /srv/nfs/kubedata
+      volumes:
+        - name: nfs-client-root
+          nfs:
+            server: 192.168.56.2
+            path: /srv/nfs/kubedata
+```
+Deploy the client-provisioner:
+```
+vagrant@kubemaster:~/samples/k8s-samples/nfs (main)
+$ kubectl create -f deployment.yaml
+deployment.apps/nfs-client-provisioner created
+```
+Verify the deployment:
+```
+vagrant@kubemaster:~/samples/k8s-samples/nfs (main)
+$ kubectl get all
+NAME                                          READY   STATUS    RESTARTS   AGE
+pod/nfs-client-provisioner-6b5c7f8f75-w4wfk   1/1     Running   0          42s
+
+NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   203d
+
+NAME                                     READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/nfs-client-provisioner   1/1     1            1           42s
+
+NAME                                                DESIRED   CURRENT   READY   AGE
+replicaset.apps/nfs-client-provisioner-6b5c7f8f75   1         1         1       42s
+```
+
+
