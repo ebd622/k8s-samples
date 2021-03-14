@@ -335,5 +335,64 @@ total 0
 ```
 As we can see the file `test.txt` is shared across the master node and the pod.
 
+##### Delete POD,PV,PVC and other resources created for the client
+3.3.5 Now lets undeploy the created resources
+
+Delete the `busybox` pod:
+
+```
+vagrant@kubemaster:~/samples/k8s-samples/nfs (main)
+$ k delete -f 4-busybox-pv-nfs.yaml 
+pod "busybox" deleted
+```
+Delete PVC:
+```
+vagrant@kubemaster:~/samples/k8s-samples/nfs (main)
+$ k delete -f 4-pvc-nfs.yaml 
+persistentvolumeclaim "pvc1" deleted
+```
+Verify that PVC and PV are deleted:
+```
+vagrant@kubemaster:~/samples/k8s-samples/nfs (main)
+$ k get pv,pvc
+No resources found in default namespace.
+```
+As we can see both PVC and dynamically created PV have been deleted.
+
+
+Verify that PV has been also deleted on the shared path:
+```
+vagrant@kubemaster:~/samples/k8s-samples/nfs (main)
+$ ls -l /srv/nfs/kubedata/
+total 0
+```
+
+Uninstall the client-provisioner:
+```
+vagrant@kubemaster:~/samples/k8s-samples/nfs (main)
+$ k delete -f deployment.yaml 
+deployment.apps "nfs-client-provisioner" deleted
+```
+
+Undeploy storageclass:
+```
+vagrant@kubemaster:~/samples/k8s-samples/nfs (main)
+$ k delete -f class.yaml 
+storageclass.storage.k8s.io "managed-nfs-storage" deleted
+```
+
+Undeploy Service Account and Role Bindings
+```
+vagrant@kubemaster:~/samples/k8s-samples/nfs (main)
+$ k delete -f rbac.yaml 
+serviceaccount "nfs-client-provisioner" deleted
+clusterrole.rbac.authorization.k8s.io "nfs-client-provisioner-runner" deleted
+clusterrolebinding.rbac.authorization.k8s.io "run-nfs-client-provisioner" deleted
+role.rbac.authorization.k8s.io "leader-locking-nfs-client-provisioner" deleted
+rolebinding.rbac.authorization.k8s.io "leader-locking-nfs-client-provisioner" deleted
+```
+
+### Resources
+* [How‌ ‌to‌ ‌Setup‌ Dynamic‌ ‌NFS‌ ‌Provisioning‌ ‌Server‌ ‌For‌ ‌Kubernetes?‌](https://redblink.com/setup-nfs-server-provisioner-kubernetes/)
 
 
