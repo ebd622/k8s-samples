@@ -40,7 +40,6 @@ Add the configuration:
 
 ```
 sudo exportfs -rav
-
 ```
 Output:
 ```
