@@ -67,7 +67,7 @@ sudo mount -t nfs 192.168.56.2:/srv/nfs/kubedata /mnt
 
 Here you may have an [issue](https://askubuntu.com/questions/525243/why-do-i-get-wrong-fs-type-bad-option-bad-superblock-error)  with mounting. 
 
-To fix you need to install `nfs-common` on every node (master and workers):
+To fix the issue you need to install `nfs-common` on every node (master and workers):
 
 ```
 sudo apt install nfs-common
