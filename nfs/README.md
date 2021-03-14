@@ -61,6 +61,7 @@ Output:
 2.1 Log onto one of the worker nodes, mount the nfs filesystem and verify it:
 
 ```
+vagrant@kubenode01:~$ 
 sudo mount -t nfs 192.168.56.2:/srv/nfs/kubedata /mnt
 ```
 
@@ -69,19 +70,16 @@ Here you may have an [issue](https://askubuntu.com/questions/525243/why-do-i-get
 To fix the issue you need to install `nfs-common` on every node (master and workers):
 
 ```
+vagrant@kubenode01:~$ 
 sudo apt install nfs-common
 ```
 
 Check the mount:
 ```
-mount | grep kubedata
+vagrant@kubenode01:~$ mount | grep kubedata
+192.168.56.2:/srv/nfs/kubedata on /mnt type nfs4 (rw,relatime,vers=4.2,rsize=524288,wsize=524288,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,clientaddr=192.168.56.3,local_lock=none,addr=192.168.56.2)
 ```
 
-Output:
-```
-192.168.56.2:/srv/nfs/kubedata on /mnt type nfs4 
-(rw,relatime,vers=4.2,rsize=524288,wsize=524288,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,clientaddr=192.168.56.3,local_lock=none,addr=192.168.56.2)
- ```
 2.2 Check the shared folder. As an example, create a file `a.out` in `/srv/nfs/kubedata`:
 
 ```
