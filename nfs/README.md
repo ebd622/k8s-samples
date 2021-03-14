@@ -1,33 +1,33 @@
 # Dynamic NFS Provisioning in Kubernetes
 
 
-### Install NFS Server
+### 1. Install NFS Server
 
-1. Create a folder which will be exported via NFS
+1.1 Create a folder which will be exported via NFS
 
 ```
 sudo mkdir /srv/nfs/kubedata -p
 ```
-2. Install the server (on a `master` node):
+1.2 Install the server (on a `master` node):
 ```
 sudo apt install nfs-kernel-server
 ```
 
 
-3. Check a status and start NFS:
+1.3 Check a status and start NFS:
 ```
 sudo service nfs-kernel-server status
 ```
 User stop/start/restart commands
 
-4. Run the command to check if NFS is running on the expected `IP_ADDRESS`
+1.4 Run the command to check if NFS is running on the expected `IP_ADDRESS`
 
 ```
 nc -zvw3 192.168.56.2 2049
 ```
 (As soon as NFS has been installed on a master node, the `IP_ADDRESS` is a master node IP. )
 
-5. Edit the exports file to add the file system we created to be exported to remote hosts.
+1.5 Edit the exports file to add the file system we created to be exported to remote hosts.
 ```
 sudo vi /etc/exports
 ```
@@ -36,7 +36,7 @@ Add the configuration:
 /srv/nfs/kubedata *(rw,sync,no_subtree_check,no_root_squash,no_all_squash,insecure)
 ```
 
-6. Run the `exportfs` command to make the local directory we configured available to remote hosts.
+1.6 Run the `exportfs` command to make the local directory we configured available to remote hosts.
 
 ```
 sudo exportfs -rav
@@ -53,7 +53,8 @@ If you want to see more details about our export file system, you can run “exp
 sudo exportfs -v
 ```
 
-7. Test the NFS configurations. Log onto one of the worker nodes and mount the nfs filesystem and verify.
+### 2. Test the NFS configuration
+2.1 Test the NFS configurations. Log onto one of the worker nodes and mount the nfs filesystem and verify.
 
 ```
 sudo mount -t nfs 192.168.56.2:/srv/nfs/kubedata /mnt
@@ -78,7 +79,7 @@ Output:
  (rw,relatime,vers=4.1,rsize=262144,wsize=262144,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,clientaddr=172.42.42.101,local_lock=none,addr=172.42.42.100)
  ```
  
- 8. After verifying that NFS is configured correctly and working we can unmount the filesystem.
+ 2.2 After verifying that NFS is configured correctly and working we can unmount the filesystem.
 
 ```
 sudo umount /mnt
