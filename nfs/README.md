@@ -83,8 +83,27 @@ Output:
 192.168.56.2:/srv/nfs/kubedata on /mnt type nfs4 
 (rw,relatime,vers=4.2,rsize=524288,wsize=524288,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,clientaddr=192.168.56.3,local_lock=none,addr=192.168.56.2)
  ```
- 
- 2.2 After verifying that NFS is configured correctly and working we can unmount the filesystem.
+2.2 Check the shared folder. As an example, create a file `a.out` in `/srv/nfs/kubedata`:
+
+```
+vagrant@kubemaster:/srv/nfs/kubedata 
+$ touch a.out
+vagrant@kubemaster:/srv/nfs/kubedata 
+$ ls -l
+total 8
+drwxrwxrwx 2 root    root    4096 Mar 14 09:32 ./
+drwxrwxrwx 3 root    root    4096 Mar 13 19:51 ../
+-rw-rw-r-- 1 vagrant vagrant    0 Mar 14 09:32 a.out
+
+```
+This file should be now accessible on the `worker`node:
+```
+vagrant@kubenode01:~$ ls -l /mnt/
+total 0
+-rw-rw-r-- 1 vagrant vagrant 0 Mar 14 09:32 a.out
+```
+
+2.3 After verifying that NFS is configured correctly and working we can unmount the filesystem. Run the command on the `worker` node:
 
 ```
 sudo umount /mnt
