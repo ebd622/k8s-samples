@@ -80,8 +80,7 @@ mount | grep kubedata
 
 Output:
 ```
-172.42.42.100:/srv/nfs/kubedata on /mnt type nfs4
- (rw,relatime,vers=4.1,rsize=262144,wsize=262144,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,clientaddr=172.42.42.101,local_lock=none,addr=172.42.42.100)
+192.168.56.2:/srv/nfs/kubedata on /mnt type nfs4 (rw,relatime,vers=4.2,rsize=524288,wsize=524288,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,clientaddr=192.168.56.3,local_lock=none,addr=192.168.56.2)
  ```
  
  2.2 After verifying that NFS is configured correctly and working we can unmount the filesystem.
