@@ -394,5 +394,7 @@ rolebinding.rbac.authorization.k8s.io "leader-locking-nfs-client-provisioner" de
 
 ### Resources
 * [How‌ ‌to‌ ‌Setup‌ Dynamic‌ ‌NFS‌ ‌Provisioning‌ ‌Server‌ ‌For‌ ‌Kubernetes?‌](https://redblink.com/setup-nfs-server-provisioner-kubernetes/)
+* Kubeapps hub: [nfs-client-provisioner](https://hub.kubeapps.com/charts/ckotzbauer/nfs-client-provisioner)
+* Artifact hub: [nfs-client-provisioner](https://artifacthub.io/packages/helm/ckotzbauer/nfs-client-provisioner)
 
 
