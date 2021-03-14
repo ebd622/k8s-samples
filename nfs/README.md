@@ -299,7 +299,7 @@ drwxrwxrwx 2 root root 4096 Mar 14 10:53 default-pvc1-pvc-cb32cece-a85d-4e76-abd
 ```
 We can see that a new folder has been created there.
 
-3.3.4 Create a Pod to use Persistent Volume Claims
+3.3.5 Create a Pod to use Persistent Volume Claims
 
 ```
 vagrant@kubemaster:~/samples/k8s-samples/nfs (main)
@@ -336,7 +336,7 @@ total 0
 As we can see the file `test.txt` is shared across the master node and the pod.
 
 ##### Delete POD,PV,PVC and other resources created for the client
-3.3.5 Now lets undeploy the created resources
+3.3.6 Now lets undeploy the created resources
 
 Delete the `busybox` pod:
 
