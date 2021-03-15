@@ -1,10 +1,10 @@
 # Dynamic NFS Provisioning in Kubernetes
 
 ##### Table of Contents  
-* [1. Install NFS Server](/1-Install-NFS-Server)
-* [2. Test the NFS configuration]
-* [3. Install NFS client-provisioner]
-* [Resources]
+* [1. Install NFS Server](#1-Install-NFS-Server)
+* [2. Test the NFS configuration](#2-Test-the-NFS-configuration)
+* [3. Install NFS client-provisioner](#3-Install-NFS-client-provisioner)
+* [Resources](#Resources)
 
 
 ### 1. Install NFS Server
