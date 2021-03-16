@@ -4,6 +4,8 @@
 * [1. Install NFS Server](#1-Install-NFS-Server)
 * [2. Test the NFS configuration](#2-Test-the-NFS-configuration)
 * [3. Install NFS client-provisioner](#3-Install-NFS-client-provisioner)
+	* 3.1 Install with Helm chart
+	* 3.2 Manual step-by-step installation	
 * [Resources](#Resources)
 
 
