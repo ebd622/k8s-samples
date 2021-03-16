@@ -6,8 +6,8 @@
 * [3. Install NFS client-provisioner](#3-Install-NFS-client-provisioner)
 	* [3.1 Install with Helm chart](#31-Install-with-Helm-chart)
 	* [3.2 Manual step-by-step installation](#32-Manual-step-by-step-installation)
-	* [Test the client: create PV, PVC and POD]()
-	* [Delete POD,PV,PVC and other resources created for the client]
+	* [Test the client: create PV, PVC and POD](#Test-the-client-create-PV-PVC-and-POD)
+	* [Delete POD,PV,PVC and other resources created for the client](#Delete-PODPVPVC-and-other-resources-created-for-the-client)
 * [Resources](#Resources)
 
 
