@@ -6,6 +6,8 @@
 * [3. Install NFS client-provisioner](#3-Install-NFS-client-provisioner)
 	* 3.1 Install with Helm chart
 	* 3.2 Manual step-by-step installation	
+	* Test the client: create PV, PVC and POD
+	* Delete POD,PV,PVC and other resources created for the client
 * [Resources](#Resources)
 
 
@@ -347,7 +349,7 @@ total 0
 ```
 As we can see the file `test.txt` is shared across the master node and the pod.
 
-##### Delete POD,PV,PVC and other resources created for the client
+#### Delete POD,PV,PVC and other resources created for the client
 3.3.6 Now lets undeploy the created resources
 
 Delete the `busybox` pod:
