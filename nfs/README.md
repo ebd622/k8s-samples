@@ -171,7 +171,7 @@ nfs-client   cluster.local/nfs-client-provisioner-1615715679   Delete          I
 
 3.1.3 Create PV, PVC and POD to test the client
 
-To test the deployment just run the steps described in 3.3.4 - 3.3.5. In 3.3.4 you need to use `helm-pvc-nfs.yaml` instead of `4-pvc-nfs.yaml` to create PVC and PV.
+To test the deployment just run the steps described in 4.1-4.2 In 4.1 you need to use `helm-pvc-nfs.yaml` instead of `4-pvc-nfs.yaml` to create PVC and PV.
 
 3.1.4 Uninstall a client-provisioner
 
@@ -268,10 +268,10 @@ deployment.apps/nfs-client-provisioner   1/1     1            1           42s
 NAME                                                DESIRED   CURRENT   READY   AGE
 replicaset.apps/nfs-client-provisioner-6b5c7f8f75   1         1         1       42s
 ```
-#### Test the client: create PV, PVC and POD
+### 4. Test the client: create PV, PVC and POD
 When client is installed we can perform some testing.
 
-3.3.4 Creating Persistent Volume and Persistent Volume Claims
+4.1 Creating Persistent Volume and Persistent Volume Claims
 
 Check is there is any PV and PVC:
 ```
@@ -313,7 +313,7 @@ drwxrwxrwx 2 root root 4096 Mar 14 10:53 default-pvc1-pvc-cb32cece-a85d-4e76-abd
 ```
 We can see that a new folder has been created there.
 
-3.3.5 Create a Pod to use Persistent Volume Claims
+4.2 Create a Pod to use Persistent Volume Claims
 
 ```
 vagrant@kubemaster:~/samples/k8s-samples/nfs (main)
@@ -349,8 +349,8 @@ total 0
 ```
 As we can see the file `test.txt` is shared across the master node and the pod.
 
-#### Delete POD,PV,PVC and other resources created for the client
-3.3.6 Now lets undeploy the created resources
+### 5. Delete POD,PV,PVC and other resources created for the client
+Now lets undeploy the created resources
 
 Delete the `busybox` pod:
 
