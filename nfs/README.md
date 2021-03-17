@@ -2,6 +2,8 @@
 
 ##### Table of Contents  
 * [1. Install NFS Server](#1-Install-NFS-Server)
+* 	[1.1 Create a folder which will be exported via NFS]()
+* 	[1.2 Install the server (on a `master` node)]()
 * [2. Test the NFS configuration](#2-Test-the-NFS-configuration)
 * [3. Install NFS client-provisioner](#3-Install-NFS-client-provisioner)
 	* [3.1 Install with Helm chart](#31-Install-with-Helm-chart)
@@ -13,31 +15,31 @@
 
 ### 1. Install NFS Server
 
-1.1 Create a folder which will be exported via NFS
+#### 1.1 Create a folder which will be exported via NFS
 
 ```
 sudo mkdir /srv/nfs/kubedata -p
 ```
-1.2 Install the server (on a `master` node):
+#### 1.2 Install the server (on a `master` node):
 ```
 sudo apt install nfs-kernel-server
 ```
 
 
-1.3 Check a status and start NFS:
+#### 1.3 Check a status and start NFS:
 ```
 sudo service nfs-kernel-server status
 ```
 User stop/start/restart commands
 
-1.4 Run the command to check if NFS is running on the expected `IP_ADDRESS`
+#### 1.4 Run the command to check if NFS is running on the expected `IP_ADDRESS`
 
 ```
 nc -zvw3 192.168.56.2 2049
 ```
 (As soon as NFS has been installed on a master node, the `IP_ADDRESS` is a master node IP. )
 
-1.5 Edit the exports file to add the file system we created to be exported to remote hosts.
+#### 1.5 Edit the exports file to add the file system we created to be exported to remote hosts.
 ```
 sudo vi /etc/exports
 ```
