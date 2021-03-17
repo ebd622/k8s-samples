@@ -3,7 +3,10 @@
 ##### Table of Contents  
 * [1. Install NFS Server](#1-Install-NFS-Server)
 	* [1.1 Create a folder which will be exported via NFS](#11-Create-a-folder-which-will-be-exported-via-NFS)
-	* [1.2 Install the server (on a `master` node)](#12-Install-the-server-on-a-master-node)
+	* [1.2 Install the server](#12-Install-the-server-on-a-master-node)
+	* [1.3 Check a status and start NFS](#13-Check-a-status-and-start-NFS)
+	* [1.4 Check if NFS is running on the expected `IP_ADDRESS`](#14-Run-the-command-to-check-if-NFS-is-running-on-the-expected-IP_ADDRESS)
+	* [1.5 Edit the exports file to add the file system we created to be exported to remote hosts](#15-Edit-the-exports-file-to-add-the-file-system-we-created-to-be-exported-to-remote-hosts)
 * [2. Test the NFS configuration](#2-Test-the-NFS-configuration)
 * [3. Install NFS client-provisioner](#3-Install-NFS-client-provisioner)
 	* [3.1 Install with Helm chart](#31-Install-with-Helm-chart)
