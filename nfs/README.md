@@ -2,8 +2,8 @@
 
 ##### Table of Contents  
 * [1. Install NFS Server](#1-Install-NFS-Server)
-* 	[1.1 Create a folder which will be exported via NFS]()
-* 	[1.2 Install the server (on a `master` node)]()
+	* [1.1 Create a folder which will be exported via NFS](#11-Create-a-folder-which-will-be-exported-via-NFS)
+	* [1.2 Install the server (on a `master` node)](#12-Install-the-server-on-a-master-node)
 * [2. Test the NFS configuration](#2-Test-the-NFS-configuration)
 * [3. Install NFS client-provisioner](#3-Install-NFS-client-provisioner)
 	* [3.1 Install with Helm chart](#31-Install-with-Helm-chart)
