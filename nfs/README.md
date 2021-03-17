@@ -7,6 +7,7 @@
 	* [1.3 Check a status and start NFS](#13-Check-a-status-and-start-NFS)
 	* [1.4 Check if NFS is running on the expected `IP_ADDRESS`](#14-Run-the-command-to-check-if-NFS-is-running-on-the-expected-IP_ADDRESS)
 	* [1.5 Edit the exports file to add the file system we created to be exported to remote hosts](#15-Edit-the-exports-file-to-add-the-file-system-we-created-to-be-exported-to-remote-hosts)
+	* [1.6 Make the local directory available to remote hosts](#16-Run-the-exportfs-command-to-make-the-local-directory-we-configured-available-to-remote-hosts)
 * [2. Test the NFS configuration](#2-Test-the-NFS-configuration)
 * [3. Install NFS client-provisioner](#3-Install-NFS-client-provisioner)
 	* [3.1 Install with Helm chart](#31-Install-with-Helm-chart)
@@ -51,7 +52,7 @@ Add the configuration:
 /srv/nfs/kubedata *(rw,sync,no_subtree_check,no_root_squash,no_all_squash,insecure)
 ```
 
-1.6 Run the `exportfs` command to make the local directory we configured available to remote hosts.
+#### 1.6 Run the `exportfs` command to make the local directory we configured available to remote hosts.
 
 ```
 sudo exportfs -rav
