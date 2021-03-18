@@ -74,7 +74,7 @@ Output:
 ```
 
 ### 2. Test the NFS configuration
-2.1 Log onto one of the worker nodes, mount the nfs filesystem and verify it:
+#### 2.1 Log onto one of the worker nodes, mount the nfs filesystem and verify it:
 
 ```
 vagrant@kubenode01:~$ 
@@ -96,7 +96,7 @@ vagrant@kubenode01:~$ mount | grep kubedata
 192.168.56.2:/srv/nfs/kubedata on /mnt type nfs4 (rw,relatime,vers=4.2,rsize=524288,wsize=524288,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,clientaddr=192.168.56.3,local_lock=none,addr=192.168.56.2)
 ```
 
-2.2 Check the shared folder. As an example, create a file `a.out` in `/srv/nfs/kubedata`:
+#### 2.2 Check the shared folder. As an example, create a file `a.out` in `/srv/nfs/kubedata`:
 
 ```
 vagrant@kubemaster:/srv/nfs/kubedata 
@@ -116,7 +116,7 @@ total 0
 -rw-rw-r-- 1 vagrant vagrant 0 Mar 14 09:32 a.out
 ```
 
-2.3 After verifying that NFS is configured correctly and working we can unmount the filesystem. Run the command on the `worker` node:
+#### 2.3 After verifying that NFS is configured correctly and working we can unmount the filesystem. Run the command on the `worker` node:
 
 ```
 sudo umount /mnt
