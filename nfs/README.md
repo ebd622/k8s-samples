@@ -11,7 +11,7 @@
 * [2. Test the NFS configuration](#2-Test-the-NFS-configuration)
 	* [2.1 Mount the nfs filesystem and verify it](#21-Log-onto-one-of-the-worker-nodes-mount-the-nfs-filesystem-and-verify-it)
 	* [2.2 Check the shared folder](#22-check-the-shared-folder-as-an-example-create-a-file-aout-in-srvnfskubedata)
-	* [2.3 Unmount the filesystem]()
+	* [2.3 Unmount the filesystem](#23-after-verifying-that-nfs-is-configured-correctly-and-working-we-can-unmount-the-filesystem-run-the-command-on-the-worker-node)
 * [3. Install NFS client-provisioner](#3-Install-NFS-client-provisioner)
 	* [3.1 Install with Helm chart](#31-Install-with-Helm-chart)
 	* [3.2 Manual step-by-step installation](#32-Manual-step-by-step-installation)
