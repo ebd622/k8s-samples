@@ -1,6 +1,6 @@
 # Dynamic NFS Provisioning in Kubernetes
 
-##### Table of Contents  
+## Table of Contents  
 * [1. Install NFS Server](#1-Install-NFS-Server)
 	* [1.1 Create a folder which will be exported via NFS](#11-Create-a-folder-which-will-be-exported-via-NFS)
 	* [1.2 Install the server](#12-Install-the-server-on-a-master-node)
@@ -19,6 +19,7 @@
 * [5. Delete POD,PV,PVC and other resources created for the client](#5-Delete-PODPVPVC-and-other-resources-created-for-the-client)
 * [Resources](#Resources)
 
+---
 
 ### 1. Install NFS Server
 
