@@ -1,6 +1,8 @@
 under constuction
 # Elastic Cloud on Kubernetes
 
-Here is a short summary how to deploy ECK
+Here is a short summary on how to deploy ECK
+
+### 1. Install NFS
 
 
