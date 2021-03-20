@@ -281,7 +281,7 @@ replicaset.apps/nfs-client-provisioner-6b5c7f8f75   1         1         1       
 ### 4. Test the client: create PV, PVC and POD
 When client is installed we can perform some testing.
 
-4.1 Creating Persistent Volume and Persistent Volume Claims
+#### 4.1 Creating Persistent Volume and Persistent Volume Claims
 
 Check is there is any PV and PVC:
 ```
@@ -323,7 +323,7 @@ drwxrwxrwx 2 root root 4096 Mar 14 10:53 default-pvc1-pvc-cb32cece-a85d-4e76-abd
 ```
 We can see that a new folder has been created there.
 
-4.2 Create a Pod to use Persistent Volume Claims
+#### 4.2 Create a Pod to use Persistent Volume Claims
 
 ```
 vagrant@kubemaster:~/samples/k8s-samples/nfs (main)
