@@ -16,6 +16,8 @@
 	* [3.1 Install with Helm chart](#31-Install-with-Helm-chart)
 	* [3.2 Manual step-by-step installation](#32-Manual-step-by-step-installation)
 * [4. Test the client: create PV, PVC and POD](#4-Test-the-client-create-PV-PVC-and-POD)
+	* [4.1 Creating Persistent Volume and Persistent Volume Claims](#41-Creating-Persistent-Volume-and-Persistent-Volume-Claims)
+	* [4.2 Create a Pod to use Persistent Volume Claims](#42-Create-a-Pod-to-use-Persistent-Volume-Claims)
 * [5. Delete POD,PV,PVC and other resources created for the client](#5-Delete-PODPVPVC-and-other-resources-created-for-the-client)
 * [Resources](#Resources)
 
