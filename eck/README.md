@@ -152,3 +152,10 @@ NAME                                      HEALTH   NODES   VERSION   AGE
 kibana.kibana.k8s.elastic.co/quickstart   green    1       7.11.2    8h
 
 ```
+
+### 3.Install ECK and Kibana
+
+```
+kubectl delete kibana quickstart
+kubectl delete elasticsearch quickstart
+```
