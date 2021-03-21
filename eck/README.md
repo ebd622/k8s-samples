@@ -140,3 +140,15 @@ $ k get svc quickstart-kb-http
 NAME                 TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
 quickstart-kb-http   NodePort   10.105.114.130   <none>        5601:31025/TCP   5m10s
 ```
+
+#### 2.4 Check a deployed elastic stack (elasticsearch and kibana)
+
+```
+$ kubectl get elastic
+NAME                                                    HEALTH   NODES   VERSION   PHASE   AGE
+elasticsearch.elasticsearch.k8s.elastic.co/quickstart   green    1       7.11.2    Ready   8h
+
+NAME                                      HEALTH   NODES   VERSION   AGE
+kibana.kibana.k8s.elastic.co/quickstart   green    1       7.11.2    8h
+
+```
