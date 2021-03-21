@@ -153,9 +153,21 @@ kibana.kibana.k8s.elastic.co/quickstart   green    1       7.11.2    8h
 
 ```
 
-### 3.Install ECK and Kibana
+### 3. Uninstall ECK and Kibana
 
+#### 3.1 Delete ECK and Kibana deployments
 ```
 kubectl delete kibana quickstart
 kubectl delete elasticsearch quickstart
 ```
+
+#### 3.2 Uninstall custom resource definitions and the operator with its RBAC rules
+
+```
+kubectl delete -f https://download.elastic.co/downloads/eck/1.4.1/all-in-one.yaml
+```
+
+#### 3.3 Uninstall NFS client-provisioner
+```
+helm uninstall nfs-client-provisioner-1616266763
+
