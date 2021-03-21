@@ -28,8 +28,8 @@ Use the image 7.5.2:
 3. Add certificate to connect to Elastic
 
 ```
-      ssl.certificate.authorities:
-        - /etc/certificate/ca.crt 
+      ssl.certificate_authorities:
+        - /etc/certificates/ca.crt 
 ```
 This certificate needs to be available in the filebeat container
 
