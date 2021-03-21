@@ -131,3 +131,12 @@ spec:
 EOF
 ```
 
+To expose Kibana UI out a cluster you need to modify the service `quickstart-kb-http` and replace the port `ClusterIP` with `NodePort`.
+
+Check the service and an external port:
+
+```
+$ k get svc quickstart-kb-http
+NAME                 TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+quickstart-kb-http   NodePort   10.105.114.130   <none>        5601:31025/TCP   5m10s
+```
