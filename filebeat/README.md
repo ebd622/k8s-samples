@@ -60,7 +60,11 @@ Add a new volume into the section `volumeMounts` (use the named defined in 2.4):
        subPath: ca.crt
 ```
 
-#### 2.6 Other changes in Deamonset
+#### 2.6 Modify ElasticSearch host and password
+Both `ELASTICSEARCH_HOST` and `ELASTICSEARCH_PASSWORD`should be changes in `Deamonset`.
+
+##### 2.6.1 Set up a host
+The service `quickstart-es-http` deployed with Elastic, should be defined as `ELASTICSEARCH_HOST`
 
 ```
 $ kubectl get svc
@@ -72,17 +76,17 @@ quickstart-es-transport   ClusterIP   None             <none>        9300/TCP   
 quickstart-kb-http        NodePort    10.105.114.130   <none>        5601:31025/TCP   118m
 ```
 
+##### 2.6.2 Change a password
 ```
 $ echo $PASSWORD
 xNV99jXC40IUnwF8l2h7W299
 ```
 
-Change `ELASTICSEARCH_HOST` and `ELASTICSEARCH_PASSWORD`:
+Change `ELASTICSEARCH_HOST` and `ELASTICSEARCH_PASSWORD`in the Daemonset:
 
 ```
     - name: ELASTICSEARCH_HOST
       value: https://quickstart-es-http
     - name: ELASTICSEARCH_PASSWORD
       value: changeme
-
 ```
