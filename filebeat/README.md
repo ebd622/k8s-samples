@@ -77,7 +77,9 @@ quickstart-kb-http        NodePort    10.105.114.130   <none>        5601:31025/
 ```
 
 ##### 2.6.2 Change a password
+Run the commands to get an Elastic password:
 ```
+PASSWORD=$(kubectl get secret quickstart-es-elastic-user -o go-template='{{.data.elastic | base64decode}}')
 $ echo $PASSWORD
 xNV99jXC40IUnwF8l2h7W299
 ```
