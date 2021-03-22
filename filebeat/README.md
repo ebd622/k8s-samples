@@ -3,7 +3,7 @@
 Here is  a step-by-step instruction how to set up and run [Filebeat on Keubernetes](https://www.elastic.co/guide/en/beats/filebeat/6.8/running-on-kubernetes.html).
 
 
-### Download manifest
+### 1. Download a filebeat manifest
 
 ```
 curl -L -O https://raw.githubusercontent.com/elastic/beats/6.8/deploy/kubernetes/filebeat-kubernetes.yaml
@@ -11,12 +11,11 @@ curl -L -O https://raw.githubusercontent.com/elastic/beats/6.8/deploy/kubernetes
 
 
 
-### Make changes in the manifest
+### 2. Make changes in the manifest
 
-1. Namespace
+#### 2.1 Change Namespace
 
 Filebeat needs to be deployed on the same namespace as Elastic and Kibana. Replace `kube-system` with `default`
-
 
 2. Change image?
 Use the image 7.5.2:
