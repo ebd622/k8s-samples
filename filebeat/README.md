@@ -8,7 +8,7 @@ Here is  a step-by-step instruction on how to set up and run [Filebeat on Keuber
 ```
 curl -L -O https://raw.githubusercontent.com/elastic/beats/6.8/deploy/kubernetes/filebeat-kubernetes.yaml
 ```
-
+The manifest needs to be modified before deploying to a cluster.
 
 
 ### 2. Make changes in the manifest
