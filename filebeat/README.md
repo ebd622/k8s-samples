@@ -26,7 +26,7 @@ We agre going to use the image tag `7.5.2`:
         image: docker.elastic.co/beats/filebeat:6.8.14
 ```
 
-#### 2.3 Add certificate to connect to Elastic
+#### 2.3 Add a certificate to connect to Elastic
 Elastic is availbale via https, here we need to add a certificate to allow Filebeat to connect to Elastic via https:
 ```
       ssl.certificate_authorities:
@@ -42,18 +42,17 @@ Add a new volume into the `volumes` section:
        secret:
          secretName: quickstart-es-http-certs-public
 ```
-(The name `certs` is used here but any other name is also possible)
+(The name `certs` is used here as an example, any other name is also possible)
 
 The added secret `quickstart-es-http-certs-public` is already available on a cluster, it has been deployed with Elastic:
-
 ```
 $ kubectl get secrets quickstart-es-http-certs-public
 NAME                              TYPE     DATA   AGE
 quickstart-es-http-certs-public   Opaque   2      130m
 ```
 
-5. Mount created vlume:
-
+#### 2.5 Mount a new vlume
+Add a new volume into the section `volumeMounts` (use the named defined in 2.4):
 ```
      - name: certs
        mountPath: /etc/certificates/ca.crt
@@ -61,7 +60,7 @@ quickstart-es-http-certs-public   Opaque   2      130m
        subPath: ca.crt
 ```
 
-6. Other changes in Deamonset
+#### 2.6 Other changes in Deamonset
 
 ```
 $ kubectl get svc
