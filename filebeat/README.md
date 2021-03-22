@@ -92,3 +92,10 @@ Change `ELASTICSEARCH_HOST` and `ELASTICSEARCH_PASSWORD`in the Daemonset:
     - name: ELASTICSEARCH_PASSWORD
       value: changeme
 ```
+A modified [filebeat-kubernetes.yaml](https://github.com/ebd622/k8s-samples/blob/main/filebeat/filebeat-kubernetes.yaml) is available the repo.
+
+### 3. Deploy the manifest
+Run the command to deploy Filebeat:
+```
+kubectl create -f filebeat-kubernetes.yaml
+```
