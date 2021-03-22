@@ -13,38 +13,41 @@ The manifest needs to be modified before deploying to a cluster.
 
 ### 2. Make changes in the manifest
 
-#### 2.1 Change Namespace
+#### 2.1 Change a namespace
 
-Filebeat needs to be deployed on the same namespace as Elastic and Kibana. Replace `kube-system` with `default`
+Filebeat should be deployed on the same namespace as Elastic and Kibana. In our example both Elastic and Kibana are deployed in the `default` namespace. 
+In the manifest you need to replace `kube-system` with `default`
 
-2. Change image?
-Use the image 7.5.2:
+#### 2.2 Change a tag image
+We agre going to use the image tag `7.5.2`:
 ```
       containers:
       - name: filebeat
         image: docker.elastic.co/beats/filebeat:6.8.14
 ```
 
-3. Add certificate to connect to Elastic
-
+#### 2.3 Add certificate to connect to Elastic
+Elastic is availbale via https, here we need to add a certificate to allow Filebeat to connect to Elastic via https:
 ```
       ssl.certificate_authorities:
         - /etc/certificates/ca.crt 
 ```
-This certificate needs to be available in the filebeat container
+This certificate needs to be available in the filebeat container.
 
 
-4. Add one more voulme:
-
+#### 2.4 Add a voulme
+Add a new volume into the `volumes` section:
 ```
      - name: certs
        secret:
          secretName: quickstart-es-http-certs-public
 ```
-The secret `quickstart-es-http-certs-public` is one deployed with Elastic:
+(The name `certs` is used here but any other name is also possible)
+
+The added secret `quickstart-es-http-certs-public` is already available on a cluster, it has been deployed with Elastic:
 
 ```
-$ k get secrets quickstart-es-http-certs-public
+$ kubectl get secrets quickstart-es-http-certs-public
 NAME                              TYPE     DATA   AGE
 quickstart-es-http-certs-public   Opaque   2      130m
 ```
