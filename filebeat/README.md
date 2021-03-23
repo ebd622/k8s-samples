@@ -1,4 +1,8 @@
 # Running Filebeat on Kubernetes
+## Table of Contents  
+* [1. Download a filebeat manifest](#1-Download-a-filebeat-manifest)
+* [2. Make changes in the manifest]()
+* [3. Deploy the manifest]()
 
 Here is  a step-by-step instruction on how to set up and run [Filebeat on Keubernetes](https://www.elastic.co/guide/en/beats/filebeat/6.8/running-on-kubernetes.html).
 
