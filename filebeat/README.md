@@ -8,8 +8,8 @@
      * [2.4 Add a voulme](#24-Add-a-voulme)
      * [2.5 Mount a new vlume](#25-Mount-a-new-vlume)
      * [2.6 Modify ElasticSearch host and password](#26-Modify-ElasticSearch-host-and-password)
-        * 2.6.1 Set up a host
-     * 
+           * [2.6.1 Set up a host](#261-Set-up-a-host)
+           * [2.6.2 Change a password](#262-Change-a-password)
 * [3. Deploy the manifest](#3-Deploy-the-manifest)
 
 ---
