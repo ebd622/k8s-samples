@@ -4,6 +4,12 @@
 * [2. Make changes in the manifest](#2-Make-changes-in-the-manifest)
      * [2.1 Change a namespace](#21-Change-a-namespace)
      * [2.2 Change a tag image](#22-Change-a-tag-image)
+     * [2.3 Add a certificate to connect to Elastic](#23-Add-a-certificate-to-connect-to-Elastic)
+     * [2.4 Add a voulme](#24-Add-a-voulme)
+     * [2.5 Mount a new vlume](#25-Mount-a-new-vlume)
+     * [2.6 Modify ElasticSearch host and password](#26-Modify-ElasticSearch-host-and-password)
+        * 2.6.1 Set up a host
+     * 
 * [3. Deploy the manifest](#3-Deploy-the-manifest)
 
 ---
