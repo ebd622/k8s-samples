@@ -2,8 +2,8 @@
 ## Table of Contents  
 * [1. Download a filebeat manifest](#1-Download-a-filebeat-manifest)
 * [2. Make changes in the manifest](#2-Make-changes-in-the-manifest)
-      * [2.1 Change a namespace](#21-Change-a-namespace)
-      * [2.2 Change a tag image](#22-Change-a-tag-image)
+     * [2.1 Change a namespace](#21-Change-a-namespace)
+     * [2.2 Change a tag image](#22-Change-a-tag-image)
 * [3. Deploy the manifest](#3-Deploy-the-manifest)
 
 ---
