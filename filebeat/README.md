@@ -1,5 +1,6 @@
 # Running Filebeat on Kubernetes
 ## Table of Contents  
+* [Prerequisite](#Prerequisite)
 * [1. Download a filebeat manifest](#1-Download-a-filebeat-manifest)
 * [2. Make changes in the manifest](#2-Make-changes-in-the-manifest)
      * [2.1 Change a namespace](#21-Change-a-namespace)
@@ -16,6 +17,8 @@
 ---
 Here is  a step-by-step instruction on how to set up and run [Filebeat on Keubernetes](https://www.elastic.co/guide/en/beats/filebeat/6.8/running-on-kubernetes.html).
 
+### Prerequisite
+Make sure that Elastic is deployed into your Kubernetes cluster
 
 ### 1. Download a filebeat manifest
 
