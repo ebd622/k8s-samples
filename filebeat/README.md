@@ -112,3 +112,6 @@ Run the command to deploy Filebeat:
 ```
 kubectl create -f filebeat-kubernetes.yaml
 ```
+
+### 4. Resources
+* [Running Filebeat on Kubernetes](https://www.elastic.co/guide/en/beats/filebeat/6.8/running-on-kubernetes.html)
