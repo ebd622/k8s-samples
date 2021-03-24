@@ -11,6 +11,7 @@
         * [2.6.1 Set up a host](#261-Set-up-a-host)
         * [2.6.2 Change a password](#262-Change-a-password)
 * [3. Deploy the manifest](#3-Deploy-the-manifest)
+* [Resources](#resources)
 
 ---
 Here is  a step-by-step instruction on how to set up and run [Filebeat on Keubernetes](https://www.elastic.co/guide/en/beats/filebeat/6.8/running-on-kubernetes.html).
