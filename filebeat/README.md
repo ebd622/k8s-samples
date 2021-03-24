@@ -15,11 +15,11 @@
 * [Resources](#resources)
 
 ---
-Here is  a step-by-step instruction on how to set up and run [Filebeat on Keubernetes](https://www.elastic.co/guide/en/beats/filebeat/6.8/running-on-kubernetes.html).
 
 ### Prerequisite
 Make sure that [Elastic Cloud on Kubernetes](../eck) is deployed into your cluster
 
+Here is  a step-by-step instruction on how to set up and run [Filebeat on Keubernetes](https://www.elastic.co/guide/en/beats/filebeat/6.8/running-on-kubernetes.html).
 ### 1. Download a filebeat manifest
 
 ```
