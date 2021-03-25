@@ -2,8 +2,9 @@ under constuction
 # Elastic Cloud on Kubernetes
 
 ## Table of Contents
-* [1.Install NFS client-provisioner](#1-Install-NFS-client-provisioner)
-* [2.Install ECK](#2-Install-ECK)
+* [1. Install NFS client-provisioner](#1-Install-NFS-client-provisioner)
+* [2. Install ECK](#2-Install-ECK)
+* [3. Uninstall ECK and Kibana](#3-Uninstall-ECK-and-Kibana)
 
 ---
 Here is a short summary on how to deploy ECK
