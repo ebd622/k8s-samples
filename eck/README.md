@@ -118,6 +118,8 @@ NAME                                                READY   STATUS    RESTARTS  
 nfs-client-provisioner-1616266763-db4bd4646-25kmw   1/1     Running   1          16h
 quickstart-es-default-0                             1/1     Running   0          15m
 ```
+When Elastic is up an running you can [Requset Elasticsearch access](https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-deploy-elasticsearch.html#k8s_request_elasticsearch_access)
+
 
 #### 2.3 Deploy a Kibana instance
 
