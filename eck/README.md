@@ -141,8 +141,9 @@ quickstart-es-http   NodePort   10.96.104.110   <none>        9200:30449/TCP   4
 
 3.Access Elastic outside a cluster:
 
+(remember that the env-variable `PASSWORD`may be defined in a different terminal)
 ```
-$ curl -u "elastic:Q03Cb50l2gLZ0HXzRA9jy005" -k "https://kubemaster:30449"
+$ curl -u "elastic:$PASSWORD" -k "https://kubemaster:30449"
 {
   "name" : "quickstart-es-default-0",
   "cluster_name" : "quickstart",
