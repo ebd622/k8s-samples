@@ -118,7 +118,49 @@ NAME                                                READY   STATUS    RESTARTS  
 nfs-client-provisioner-1616266763-db4bd4646-25kmw   1/1     Running   1          16h
 quickstart-es-default-0                             1/1     Running   0          15m
 ```
-When Elastic is up an running you can [Requset Elasticsearch access](https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-deploy-elasticsearch.html#k8s_request_elasticsearch_access)
+
+#### 2.3 Test Elasticsearch
+
+When Elasticsearch is up an running you can [Requset Elasticsearch access](https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-deploy-elasticsearch.html#k8s_request_elasticsearch_access) and perofm testing.
+
+1. Get the credentials:
+
+A default user named `elastic` is automatically created with the password stored in a Kubernetes secret. Run the command to get a password and store it in the variable `PASSWORD`:
+```
+PASSWORD=$(kubectl get secret quickstart-es-elastic-user -o go-template='{{.data.elastic | base64decode}}')
+```
+
+2. Expose the service `quickstart-es-http` out of a cluster. <br/>
+By default the service is available within a cluster, is uses `ClusterPort`. You need to edit the service and replace `ClusterPort` with `NodePort`. Then you will get a port to access Elastic outside a cluster:
+
+```
+$ kubectl get svc quickstart-es-http
+NAME                 TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+quickstart-es-http   NodePort   10.96.104.110   <none>        9200:30449/TCP   47m
+```
+
+3.Access Elastic outside a cluster:
+
+```
+$ curl -u "elastic:Q03Cb50l2gLZ0HXzRA9jy005" -k "https://kubemaster:30449"
+{
+  "name" : "quickstart-es-default-0",
+  "cluster_name" : "quickstart",
+  "cluster_uuid" : "ept3QhxkR4mM5thyb-ZxQQ",
+  "version" : {
+    "number" : "7.11.2",
+    "build_flavor" : "default",
+    "build_type" : "docker",
+    "build_hash" : "3e5a16cfec50876d20ea77b075070932c6464c7d",
+    "build_date" : "2021-03-06T05:54:38.141101Z",
+    "build_snapshot" : false,
+    "lucene_version" : "8.7.0",
+    "minimum_wire_compatibility_version" : "6.8.0",
+    "minimum_index_compatibility_version" : "6.0.0-beta1"
+  },
+  "tagline" : "You Know, for Search"
+}
+```
 
 
 #### 2.3 Deploy a Kibana instance
