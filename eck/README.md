@@ -123,14 +123,14 @@ quickstart-es-default-0                             1/1     Running   0         
 
 When Elasticsearch is up an running you can [Requset Elasticsearch access](https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-deploy-elasticsearch.html#k8s_request_elasticsearch_access) and perofm testing.
 
-1. Get the credentials:
+##### 2.3.1 Get the credentials
 
 A default user named `elastic` is automatically created with the password stored in a Kubernetes secret. Run the command to get a password and store it in the variable `PASSWORD`:
 ```
 PASSWORD=$(kubectl get secret quickstart-es-elastic-user -o go-template='{{.data.elastic | base64decode}}')
 ```
 
-2. Expose the service `quickstart-es-http` out of a cluster. <br/>
+##### 2.3.2 Expose the service `quickstart-es-http` out of a cluster. <br/>
 By default the service is available within a cluster, is uses `ClusterPort`. You need to edit the service and replace `ClusterPort` with `NodePort`. Then you will get a port to access Elastic outside a cluster:
 
 ```
@@ -139,7 +139,7 @@ NAME                 TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)          A
 quickstart-es-http   NodePort   10.96.104.110   <none>        9200:30449/TCP   47m
 ```
 
-3.Access Elastic outside a cluster:
+##### 2.3.3 Access Elastic outside a cluster
 
 (remember that the env-variable `PASSWORD`may be defined in a different terminal)
 ```
@@ -162,7 +162,6 @@ $ curl -u "elastic:$PASSWORD" -k "https://kubemaster:30449"
   "tagline" : "You Know, for Search"
 }
 ```
-
 
 #### 2.4 Deploy a Kibana instance
 
