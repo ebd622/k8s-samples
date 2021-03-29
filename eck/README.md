@@ -164,7 +164,7 @@ $ curl -u "elastic:$PASSWORD" -k "https://kubemaster:30449"
 ```
 
 
-#### 2.3 Deploy a Kibana instance
+#### 2.4 Deploy a Kibana instance
 
 https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-deploy-kibana.html#k8s-deploy-kibana
 
@@ -192,7 +192,7 @@ NAME                 TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)          
 quickstart-kb-http   NodePort   10.105.114.130   <none>        5601:31025/TCP   5m10s
 ```
 
-#### 2.4 Check a deployed elastic stack (elasticsearch and kibana)
+#### 2.5 Check a deployed elastic stack (elasticsearch and kibana)
 
 ```
 $ kubectl get elastic
