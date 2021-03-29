@@ -58,7 +58,7 @@ EOF
 Check a deployemnt.
 After this step you may see that a pod `quickstart-es-default-0` is in a pending state:
 ```
-$ k get po
+$ kubectl get po
 NAME                                                READY   STATUS    RESTARTS   AGE
 nfs-client-provisioner-1616266763-db4bd4646-25kmw   1/1     Running   1          15h
 quickstart-es-default-0                             0/1     Pending   0          4m16s
@@ -66,7 +66,7 @@ quickstart-es-default-0                             0/1     Pending   0         
 
 This happens because a created PVC doesn't specify a correct `storageclass`. If you check a created PVC is will also have a pending status:
 ```
-$ k get pvc
+$ kubectl get pvc
 NAME                                         STATUS    VOLUME   CAPACITY   ACCESS MODES   STORAGECLASS   AGE
 elasticsearch-data-quickstart-es-default-0   Pending                                                     7m14s
 ```
@@ -102,7 +102,7 @@ kubectl create -f pvc.yaml
 
 
 ``` 
-$ k get pvc,pv
+$ kubectl get pvc,pv
 NAME                                                               STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
 persistentvolumeclaim/elasticsearch-data-quickstart-es-default-0   Bound    pvc-da94c602-3bf9-40d8-acfd-cf8a12b6e7e0   1Gi        RWO            nfs-client     5m9s
 
@@ -113,7 +113,7 @@ persistentvolume/pvc-da94c602-3bf9-40d8-acfd-cf8a12b6e7e0   1Gi        RWO      
 
 Check pods:
 ```
-$ k get po
+$ kubectl get po
 NAME                                                READY   STATUS    RESTARTS   AGE
 nfs-client-provisioner-1616266763-db4bd4646-25kmw   1/1     Running   1          16h
 quickstart-es-default-0                             1/1     Running   0          15m
@@ -123,7 +123,7 @@ quickstart-es-default-0                             1/1     Running   0         
 
 When Elasticsearch is up an running you can [Requset Elasticsearch access](https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-deploy-elasticsearch.html#k8s_request_elasticsearch_access) and perofm testing.
 
-##### 2.3.1 Get the credentials
+##### 2.3.1 Get credentials
 
 A default user named `elastic` is automatically created with the password stored in a Kubernetes secret. Run the command to get a password and store it in the variable `PASSWORD`:
 ```
@@ -131,7 +131,7 @@ PASSWORD=$(kubectl get secret quickstart-es-elastic-user -o go-template='{{.data
 ```
 
 ##### 2.3.2 Expose the service `quickstart-es-http` out of a cluster. <br/>
-By default the service is available within a cluster, is uses `ClusterPort`. You need to edit the service and replace `ClusterPort` with `NodePort`. Then you will get a port to access Elastic outside a cluster:
+By default the service is available within a cluster, it uses `ClusterPort`. You need to edit the service and replace `ClusterPort` with `NodePort`. Then you will get a port to access Elastic outside a cluster:
 
 ```
 $ kubectl get svc quickstart-es-http
