@@ -81,7 +81,7 @@ How to fix this:
 kubectl get pvc elasticsearch-data-quickstart-es-default-0 -o yaml > pvc.yaml
 ```
 
-2. Modify the `pvc.yaml`: replace the section `spec:` whit a new one:
+##### 2.2.2 Modify the `pvc.yaml`: replace the section `spec:` whit a new one:
 ```
   spec:
     storageClassName: nfs-client
@@ -92,13 +92,13 @@ kubectl get pvc elasticsearch-data-quickstart-es-default-0 -o yaml > pvc.yaml
         storage: 1Gi
 ```
 
-3. Replace PVC: delete the current one and create a new one:
+##### 2.2.3 Replace PVC: delete the current one and create a new one:
 ```
 kubectl delete pvc elasticsearch-data-quickstart-es-default-0
 kubectl create -f pvc.yaml
 ```
 
-4. Check a new PVC and created PV:
+##### 2.2.4 Check a new PVC and created PV:
 
 
 ``` 
