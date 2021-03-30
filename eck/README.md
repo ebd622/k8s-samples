@@ -75,7 +75,7 @@ elasticsearch-data-quickstart-es-default-0   Pending                            
 How to fix this:
 
 
-1. Get specification for a created PVC and store it as a yaml file:
+##### 2.2.1 Get specification for a created PVC and store it as a yaml file:
 
 ```
 kubectl get pvc elasticsearch-data-quickstart-es-default-0 -o yaml > pvc.yaml
