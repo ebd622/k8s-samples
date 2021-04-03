@@ -219,5 +219,5 @@ kubectl delete -f https://download.elastic.co/downloads/eck/1.4.1/all-in-one.yam
 
 #### 3.3 Uninstall NFS client-provisioner
 ```
-helm uninstall nfs-client-provisioner-1616266763
-
+helm uninstall nfs-client-provisioner-xxxxxxxxxx
+```
