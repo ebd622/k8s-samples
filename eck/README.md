@@ -4,6 +4,11 @@ under constuction
 ## Table of Contents
 * [1. Install NFS client-provisioner](#1-Install-NFS-client-provisioner)
 * [2. Install ECK](#2-Install-ECK)
+  * [2.1 Deploy ECK in your Kubernetes cluster]()
+  * [2.2 Deploy an Elasticsearch cluster]()
+  * [2.3 Test Elasticsearch]()
+  * [2.4 Deploy a Kibana instance]()
+  * [2.5 Check a deployed elastic stack (elasticsearch and kibana)]()
 * [3. Uninstall ECK and Kibana](#3-Uninstall-ECK-and-Kibana)
 
 ---
