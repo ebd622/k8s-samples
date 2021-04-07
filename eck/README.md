@@ -8,7 +8,7 @@ under constuction
   * [2.2 Deploy an Elasticsearch cluster]()
   * [2.3 Test Elasticsearch]()
   * [2.4 Deploy a Kibana instance]()
-  * [2.5 Check a deployed elastic stack (elasticsearch and kibana)]()
+  * [2.5 Check a deployed elastic stack (elasticsearch and kibana)](#25-check-a-deployed-elastic-stack-elasticsearch-and-kibana)
 * [3. Uninstall ECK and Kibana](#3-Uninstall-ECK-and-Kibana)
 
 ---
