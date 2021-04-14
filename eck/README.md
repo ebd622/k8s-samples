@@ -12,7 +12,7 @@ under constuction
 * [3. Uninstall ECK and Kibana](#3-Uninstall-ECK-and-Kibana)
   * [3.1 Delete ECK and Kibana deployments](#31-delete-eck-and-kibana-deployments)
   * [3.2 Uninstall custom resource definitions and the operator with its RBAC rules](#32-uninstall-custom-resource-definitions-and-the-operator-with-its-rbac-rules)
-  * [3.3 Uninstall NFS client-provisioner]()
+  * [3.3 Uninstall NFS client-provisioner](#33-uninstall-nfs-client-provisioner)
 
 ---
 Here is a short summary on how to deploy ECK
