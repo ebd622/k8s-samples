@@ -10,6 +10,9 @@ under constuction
   * [2.4 Deploy a Kibana instance]()
   * [2.5 Check a deployed elastic stack (elasticsearch and kibana)](#25-check-a-deployed-elastic-stack-elasticsearch-and-kibana)
 * [3. Uninstall ECK and Kibana](#3-Uninstall-ECK-and-Kibana)
+  * [3.1 Delete ECK and Kibana deployments]()
+  * [3.2 Uninstall custom resource definitions and the operator with its RBAC rules]()
+  * [3.3 Uninstall NFS client-provisioner]()
 
 ---
 Here is a short summary on how to deploy ECK
